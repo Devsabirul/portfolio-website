@@ -1,0 +1,60 @@
+{% extends 'dashboard_base/base.html' %}
+{% load static %}
+{% block title %}Dashboard | Services Edit info {% endblock title %}
+{% block logo %}
+{% for about in about %}
+<img src="{{about.logo.url}}" alt="">
+{% endfor %}
+{% endblock logo %}
+{% block profile_pic %}
+{% for about in about %}
+<img src="{{about.photo.url}}" alt="Profile" class="rounded-circle">
+{{about.name}}
+{% endfor %}
+{% endblock profile_pic %}
+{% block name %}
+{% for about in about %}
+{{about.name}}
+{% endfor %}
+{% endblock name %}
+{% block profile %}
+{% for about in about %}
+{{about.profile}}
+{% endfor %}
+{% endblock profile %}
+{% block copyright_ %}
+{% for about in about %}
+{{about.name}}
+{% endfor %}
+{% endblock copyright_ %}
+{% block body %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Services Section</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="profile">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Services</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <div class="col-lg-8">
+        <div class="skill_ mt-5">
+            <form action="add-services-info" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <b><u> Add informations: </u></b><br>
+                {% for fm in form %}
+                {{fm}}
+                {% endfor %}
+                <input type="submit" class="btn btn-primary d-block mt-3 " value="Add">
+            </form>
+        </div>
+    </div>
+    <section class="section profile">
+        <div class="row">
+        </div>
+    </section>
+
+</main><!-- End #main -->
+{% endblock body %}

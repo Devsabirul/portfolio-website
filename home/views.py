@@ -16,6 +16,9 @@ def home(request):
     blog_list = Blog_item.objects.all()
     count = Count.objects.all()
     testimonial = Testimonial.objects.all()
+    # sliceing
+    blog_slice_title = []
+    blog_slice_description = []
     context = {
         'about': about,
         'hero': hero,
@@ -25,10 +28,17 @@ def home(request):
         'portfolio': portfolio,
         'portfolio_list': portfolio_list,
         'blog': blog,
+        'blog_title': blog_slice_title,
+        'blog_description': blog_slice_description,
         'blog_list': blog_list,
         'count': count,
         'testimonial': testimonial
     }
+    for i in blog_list:
+        blog_slice_title.append(i.title[0:29])
+        blog_slice_description.append(i.description[0:140])
+
+    print(blog_slice_title)
     return render(request, 'home/index.html', context)
 
 

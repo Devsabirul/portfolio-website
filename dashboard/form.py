@@ -31,3 +31,31 @@ class Hero_form(forms.ModelForm):
             "t3": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Typing Effect 3rd '}),
             "t4": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Typing Effect 4th '}),
         }
+
+
+class Services_form(forms.ModelForm):
+    class Meta:
+        model = Services_list
+        fields = "__all__"
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'service title'}),
+            "description": forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder': 'service description'}),
+            "icon": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'service icon class name'}),
+        }
+
+
+class Portfolio_form(forms.ModelForm):
+    class Meta:
+        model = Portfolio_item
+        fields = "__all__"
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Portfolio title'}),
+            "description": forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder': 'portfolio description'}),
+            "category": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'portfolio Category '}),
+            "project_client": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'portfolio project_client'}),
+            "url": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'portfolio url '}),
+            'Picture': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+            'slider_one': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+            'slider_two': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+            'slider_three': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+        }

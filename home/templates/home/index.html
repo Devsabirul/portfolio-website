@@ -8,24 +8,28 @@
 {% endblock logo %}
 {% block body %}
 <!-- ======= Hero Section ======= -->
-{% for hero in hero %}
-<div id="hero" class="hero route bg-image" style="background-image: url({{hero.img.url}})">
-  <div class="overlay-itro"></div>
-  <div class="hero-content display-table">
-    <div class="table-cell">
-      <div class="container">
-        <h1 class="hero-title mb-4"> {{hero.heading}} </h1>
-        <p class="hero-subtitle"> i'm a <span class="typed"
-            data-typed-items="{{hero.t1}},{{hero.t2}},{{hero.t3}},{{hero.t4}}"></span></p>
+{% if hero|length == 1 %}
+  {% for hero in hero %}
+    <div id="hero" class="hero route bg-image" style="background-image: url({{hero.img.url}})">
+      <div class="overlay-itro"></div>
+      <div class="hero-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h1 class="hero-title mb-4"> {{hero.heading}} </h1>
+            <p class="hero-subtitle"> i'm a <span class="typed"
+                data-typed-items="{{hero.t1}},{{hero.t2}},{{hero.t3}},{{hero.t4}}"></span></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-{% endfor %}
+  {% endfor %}
 <!-- End Hero Section -->
-
+{% else %}
+    <div class="contaier">
+      <p class="text-center mt-5 hero_alert">Please Add Hero Section</p>
+    </div>
+{% endif %}
 <main id="main">
-
   <!-- ======= About Section ======= -->
   <section id="about" class="about-mf sect-pt4 route">
     {% for about in about %}

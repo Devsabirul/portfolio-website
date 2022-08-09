@@ -81,3 +81,27 @@ def update_hero(request):
             get_id = Hero.objects.get(id=1)
             fm = Hero_form(instance=get_id)
         return render(request, 'dashboard/hero_update.html', {'form': fm, 'hero': hero})
+
+
+def services_list(request):
+    about = About.objects.all()
+    if request.method == "POST":
+        fm = Services_form(request.POST, request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect("/dashboard/add-services-info")
+    else:
+        fm = Services_form()
+    return render(request, 'dashboard/services.html', {'about': about, 'form': fm})
+
+
+def portfolio_list(request):
+    about = About.objects.all()
+    if request.method == "POST":
+        fm = Portfolio_form(request.POST, request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect("/dashboard/add-portfolio-info")
+    else:
+        fm = Portfolio_form()
+    return render(request, 'dashboard/portfolio_item.html', {'about': about, 'form': fm})
