@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db import models
 
 # Create your models here.
@@ -6,12 +5,12 @@ from django.db import models
 
 class Hero(models.Model):
     img = models.ImageField(upload_to="images/")
-    heading = models.CharField(max_length=100)
+    heading = models.CharField(max_length=120)
     # typeing efect
-    t1 = models.CharField(max_length=50)
-    t2 = models.CharField(max_length=50)
-    t3 = models.CharField(max_length=50)
-    t4 = models.CharField(max_length=50)
+    t1 = models.CharField(max_length=100)
+    t2 = models.CharField(max_length=100)
+    t3 = models.CharField(max_length=100)
+    t4 = models.CharField(max_length=100)
 
     def __str__(self):
         return self.t1

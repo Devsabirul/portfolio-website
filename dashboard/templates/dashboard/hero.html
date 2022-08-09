@@ -1,6 +1,6 @@
 {% extends 'dashboard_base/base.html' %}
 {% load static %}
-{% block title %}Dashboard | Profile{% endblock title %}
+{% block title %}Dashboard | Hero Edit info {% endblock title %}
 {% block logo %}
 {% for about in about %}
 <img src="{{about.logo.url}}" alt="">
@@ -30,24 +30,24 @@
 {% block body %}
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Add Your Skills</h1>
+        <h1>Hero Section</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="profile">Home</a></li>
                 <li class="breadcrumb-item">Users</li>
-                <li class="breadcrumb-item active">Add Skills</li>
+                <li class="breadcrumb-item active">Hero</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <div class="col-lg-8">
         <div class="skill_ mt-5">
-            <form action="" method="post">
+            <form action="add-cover-info" method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
-               <b><u> Add informations: </u></b>
-                {% for fm in form %}
-                 {{fm}}
-                {% endfor %}
-                <input type="submit" class="btn btn-primary d-block mt-3 " value="Add ">
+                <b><u> Add informations: </u></b><br>
+                    {% for fm in form %}
+                    {{fm}}
+                    {% endfor %}
+                <input type="submit" class="btn btn-primary d-block mt-3 " value="Add">
             </form>
         </div>
     </div>

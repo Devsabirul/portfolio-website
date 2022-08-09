@@ -6,6 +6,11 @@
 <img src="{{about.logo.url}}" alt="">
 {% endfor %}
 {% endblock logo %}
+{% block copyright_name %}
+{% for about in about %}
+{{about.name}}
+{% endfor %}
+{% endblock copyright_name %}
 {% block body %}
 <div class="hero hero-single route bg-image" style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
   <div class="overlay-mf"></div>

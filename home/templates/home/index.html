@@ -119,66 +119,62 @@
       </div>
     </div>
   </section><!-- End Services Section -->
-
-  <!-- ======= Counter Section ======= -->
-  {% for count in count %}
-  <div class="section-counter paralax-mf bg-image" style="background-image: url(assets/img/counters-bg.jpg)">
-    <div class="overlay-mf"></div>
-    <div class="container position-relative">
-      <div class="row">
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="bi bi-check"></i></span>
-            </div>
-            <div class="counter-num">
-              <p data-purecounter-start="0" data-purecounter-end="{{count.work}}" data-purecounter-duration="1"
-                class="counter purecounter"></p>
-              <span class="counter-text">WORKS COMPLETED</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
-            </div>
-            <div class="counter-num">
-              <p data-purecounter-start="0" data-purecounter-end="{{count.experience}}" data-purecounter-duration="1"
-                class="counter purecounter"></p>
-              <span class="counter-text">YEARS OF EXPERIENCE</span>
+<!-- ======= Counter Section ======= -->
+{% for counter in count %}
+    <div class="section-counter paralax-mf bg-image" style="background-image: url({% static 'assets/img/counters-bg.jpg' %})">
+      <div class="overlay-mf"></div>
+      <div class="container position-relative">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-check"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{counter.work}}</p>
+                <span class="counter-text">WORKS COMPLETED</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="bi bi-people"></i></span>
-            </div>
-            <div class="counter-num">
-              <p data-purecounter-start="0" data-purecounter-end="{{count.total_client}}" data-purecounter-duration="1"
-                class="counter purecounter"></p>
-              <span class="counter-text">TOTAL CLIENTS</span>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{counter.experience}}</p>
+                <span class="counter-text">YEARS OF EXPERIENCE</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="bi bi-award"></i></span>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-people"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{counter.total_client}}</p>
+                <span class="counter-text">TOTAL CLIENTS</span>
+              </div>
             </div>
-            <div class="counter-num">
-              <p data-purecounter-start="0" data-purecounter-end="{{count.award_won}}" data-purecounter-duration="1"
-                class="counter purecounter"></p>
-              <span class="counter-text">AWARD WON</span>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-award"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{counter.award_won}}</p>
+                <span class="counter-text">AWARD WON</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  {% endfor %}
-  <!-- End Counter Section -->
+    </div><!-- End Counter Section -->
+    
+{% endfor %}
+
 
   <!-- ======= Portfolio Section ======= -->
   <section id="work" class="portfolio-mf sect-pt4 route">
@@ -383,10 +379,10 @@
                   </div>
                   <div class="more-info">
                     <p class="lead">
-                      <p><span class="title-s">Name: </span> <span> {{contact.name}} </span></p>
-                      <p><span class="title-s">Profile: </span> <span> {{contact.profile}} </span></p>
-                      <p><span class="title-s">Email: </span> <span>{{contact.email}}</span></p>
-                      <p><span class="title-s">Phone: </span> <span>{{contact.phone}}</span></p>
+                    <p><span class="title-s">Name: </span> <span> {{contact.name}} </span></p>
+                    <p><span class="title-s">Profile: </span> <span> {{contact.profile}} </span></p>
+                    <p><span class="title-s">Email: </span> <span>{{contact.email}}</span></p>
+                    <p><span class="title-s">Phone: </span> <span>{{contact.phone}}</span></p>
                     </p>
                     <ul class="list-ico">
                       <li><span class="bi bi-geo-alt"></span> {{contact.location}}</li>
