@@ -11,4 +11,6 @@ urlpatterns = [
     path('update-hero', update_hero, name="update_hero"),
     path('add-services-info', services_list, name="services_list"),
     path('add-portfolio-info', portfolio_list, name="portfolio_list"),
+    path('add-blog-info', blog_list, name="blog_list"),
+    path('add-testimonial-info', testimonial, name="testimonial"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

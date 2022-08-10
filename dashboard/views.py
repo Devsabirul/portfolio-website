@@ -105,3 +105,27 @@ def portfolio_list(request):
     else:
         fm = Portfolio_form()
     return render(request, 'dashboard/portfolio_item.html', {'about': about, 'form': fm})
+
+
+def blog_list(request):
+    about = About.objects.all()
+    if request.method == "POST":
+        fm = Blog_form(request.POST, request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect("/dashboard/add-blog-info")
+    else:
+        fm = Blog_form()
+    return render(request, 'dashboard/blog_item.html', {'about': about, 'form': fm})
+
+
+def testimonial(request):
+    about = About.objects.all()
+    if request.method == "POST":
+        fm = testimonial_form(request.POST, request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect("/dashboard/add-testimonial-info")
+    else:
+        fm = testimonial_form()
+    return render(request, 'dashboard/testimonial.html', {'about': about, 'form': fm})

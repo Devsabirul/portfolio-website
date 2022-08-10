@@ -13,6 +13,12 @@ h6 {
 }
 
 /* manualy  */
+.cv_ {
+  color: white !important;
+  border: 1px solid !important;
+  padding: 10px 25px !important;
+}
+
 .btn_ {
   margin-top: -15px;
   float: left;

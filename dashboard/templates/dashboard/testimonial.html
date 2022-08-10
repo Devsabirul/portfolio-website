@@ -1,6 +1,6 @@
 {% extends 'dashboard_base/base.html' %}
 {% load static %}
-{% block title %}Dashboard | Portfolio Edit info {% endblock title %}
+{% block title %}Dashboard | testimonial Edit info {% endblock title %}
 {% block logo %}
 {% for about in about %}
 <img src="{{about.logo.url}}" alt="">
@@ -30,18 +30,18 @@
 {% block body %}
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Portfolio Section</h1>
+        <h1>Testimonials Section</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="profile">Home</a></li>
                 <li class="breadcrumb-item">Users</li>
-                <li class="breadcrumb-item active">Portfolio</li>
+                <li class="breadcrumb-item active">testimonial</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <div class="col-lg-8">
         <div class="skill_ mt-5">
-            <form action="add-services-info" method="post" enctype="multipart/form-data">
+            <form action="add-testimonial-info" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <b><u> Add informations: </u></b><br>
                 {% for fm in form %}

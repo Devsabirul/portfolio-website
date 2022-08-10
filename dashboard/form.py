@@ -59,3 +59,27 @@ class Portfolio_form(forms.ModelForm):
             'slider_two': forms.FileInput(attrs={'class': 'form-control mt-3'}),
             'slider_three': forms.FileInput(attrs={'class': 'form-control mt-3'}),
         }
+
+
+class Blog_form(forms.ModelForm):
+    class Meta:
+        model = Blog_item
+        fields = "__all__"
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Blog title'}),
+            "description": forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder': 'Blog description'}),
+            "category": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Blog Category '}),
+            "author": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Blog Author '}),
+            'Picture': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+        }
+
+
+class testimonial_form(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        fields = "__all__"
+        widgets = {
+            "description": forms.Textarea(attrs={'class': 'form-control mt-3', 'placeholder': 'Testimonial description'}),
+            "author": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Testimonial Author '}),
+            'photo': forms.FileInput(attrs={'class': 'form-control mt-3'}),
+        }

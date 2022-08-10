@@ -17,7 +17,9 @@
           <div class="container">
             <h1 class="hero-title mb-4"> {{hero.heading}} </h1>
             <p class="hero-subtitle"> i'm a <span class="typed"
-                data-typed-items="{{hero.t1}},{{hero.t2}},{{hero.t3}},{{hero.t4}}"></span></p>
+                data-typed-items="{{hero.t1}},{{hero.t2}},{{hero.t3}},{{hero.t4}}"></span>
+            </p>
+            <a href="{{hero.cv.url}}" class="btn btn-outline-primary cv_ mt-4 "><i class="fa-solid fa-download"></i> DOWNLOAD CV</a>
           </div>
         </div>
       </div>
@@ -230,7 +232,7 @@
   </section><!-- End Portfolio Section -->
 
   <!-- ======= Testimonials Section ======= -->
-  <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+  <div class="testimonials paralax-mf bg-image" style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
     <div class="overlay-mf"></div>
     <div class="container">
       <div class="row">
@@ -297,7 +299,7 @@
               </div>
               <h3 class="card-title"><a href="{% url 'blog_single_page' item.slug %}">{{item.title}}</a></h3>
               <p class="card-description">
-                {{item.description}}
+                {% comment %} {{item.description}} {% endcomment %}
               </p>
             </div>
             <div class="card-footer">
