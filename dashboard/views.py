@@ -129,3 +129,36 @@ def testimonial(request):
     else:
         fm = testimonial_form()
     return render(request, 'dashboard/testimonial.html', {'about': about, 'form': fm})
+
+
+def otherComponent(request):
+    about = About.objects.all()
+    services = Services.objects.all()
+    blog = Blog.objects.all()
+    portfolio = Portfolio.objects.all()
+    count = Count.objects.all()
+    context = {
+        'services': services,
+        'about': about,
+        'blog': blog,
+        'portfolio': portfolio,
+        'count': count
+    }
+    if request.method == "POST":
+        services = Services(id=1)
+        services.description = request.POST['services']
+        services.save()
+        blog = Blog(id=1)
+        blog.description = request.POST['blog']
+        blog.save()
+        portfolio = Portfolio(id=1)
+        portfolio.description = request.POST['portfolio']
+        portfolio.save()
+        count = Count(id=1)
+        count.work = request.POST['work']
+        count.experience = request.POST['experience']
+        count.total_client = request.POST['client']
+        count.award_won = request.POST['award_won']
+        count.save()
+
+    return render(request, 'dashboard/otherComponent.html', context)

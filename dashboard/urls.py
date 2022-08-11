@@ -13,4 +13,5 @@ urlpatterns = [
     path('add-portfolio-info', portfolio_list, name="portfolio_list"),
     path('add-blog-info', blog_list, name="blog_list"),
     path('add-testimonial-info', testimonial, name="testimonial"),
+    path('others-component', otherComponent, name="otherComponent"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
