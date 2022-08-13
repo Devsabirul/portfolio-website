@@ -23,9 +23,9 @@
 {% endfor %}
 {% endblock profile %}
 {% block copyright_ %}
-  {% for about in about %}
-    {{about.name}}
-  {% endfor %}
+{% for about in about %}
+{{about.name}}
+{% endfor %}
 {% endblock copyright_ %}
 {% block body %}
 <main id="main" class="main">
@@ -124,7 +124,8 @@
                       <label for="profileImage" class="required col-md-4 col-lg-3 col-form-label">Profile
                         Image<span>*</span> </label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{{about.photo.url}}" alt="Profile">
+                        <img src="{{about.photo.url}}" alt="Profile"><br>
+                        <span class="size_">150 X 150</span>
                         <div class="pt-2">
                           <input type="file" required name="profile_pic" class="d-none" id="profile_pic">
                           <label for="profile_pic" class="btn btn-primary btn-sm" title="Upload new profile image"><i
@@ -138,7 +139,8 @@
                       <label for="profileImage" class="required col-md-4 col-lg-3 col-form-label">Logo
                         Image<span>*</span></label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{{about.logo.url}}" alt="Logo">
+                        <img src="{{about.logo.url}}" alt="Logo"><br>
+                        <span class="size_">160 X 40</span>
                         <div class="pt-2">
                           <input required id="logo" name="logo" class="d-none opacity-25" type="file">
                           <label for="logo" class="btn btn-primary btn-sm" title="Upload new Logo image"><i

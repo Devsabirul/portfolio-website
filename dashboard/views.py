@@ -67,6 +67,7 @@ def hero(request):
 
 
 def update_hero(request):
+    about = About.objects.all()
     hero = Hero.objects.all()
     length_ = len(hero)
     if length_ == 0:
@@ -80,7 +81,7 @@ def update_hero(request):
         else:
             get_id = Hero.objects.get(id=1)
             fm = Hero_form(instance=get_id)
-        return render(request, 'dashboard/hero_update.html', {'form': fm, 'hero': hero})
+        return render(request, 'dashboard/hero_update.html', {'form': fm, 'hero': hero, 'about': about})
 
 
 def services_list(request):
@@ -162,3 +163,5 @@ def otherComponent(request):
         count.save()
 
     return render(request, 'dashboard/otherComponent.html', context)
+
+
