@@ -18,8 +18,6 @@
   <!-- Vendor CSS Files -->
   <link href="{% static 'dashboard/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'dashboard/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'dashboard/assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
-
   <!-- Template Main CSS File -->
   <link href="{% static 'dashboard/assets/css/style.css' %}" rel="stylesheet">
 
@@ -355,12 +353,7 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html">
+            <a href="table-list">
               <i class="bi bi-circle"></i><span>Data Tables</span>
             </a>
           </li>
@@ -395,9 +388,6 @@
 
   <!-- Vendor JS Files -->
   <script src="{% static 'dashboard/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'dashboard/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
-  <script src="{% static 'dashboard/assets/vendor/tinymce/tinymce.min.js' %}"></script>
-
   <!-- Template Main JS File -->
   <script src="{% static 'dashboard/assets/js/main.js' %}"></script>
 

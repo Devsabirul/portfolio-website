@@ -165,3 +165,67 @@ def otherComponent(request):
     return render(request, 'dashboard/otherComponent.html', context)
 
 
+def table_view(request):
+    skill = Skill.objects.all()
+    about = About.objects.all()
+    services = Services_list.objects.all()
+    portfolio = Portfolio_item.objects.all()
+    testimonial = Testimonial.objects.all()
+    blog = Blog_item.objects.all()
+    context = {
+        'skills': skill,
+        'about': about,
+        'services': services,
+        'portfolio': portfolio,
+        'testimonial': testimonial,
+        'blog': blog
+    }
+    return render(request, 'dashboard/tables.html', context)
+
+
+def delete(request):
+    data = request.POST
+    id = data.get('id')
+    skills = Skill.objects.get(id=id)
+    skills.delete()
+    return redirect('/dashboard/table-list')
+
+# services delete
+
+
+def delete_services(request):
+    data = request.POST
+    id = data.get('id')
+    services = Services_list.objects.get(id=id)
+    services.delete()
+    return redirect('/dashboard/table-list')
+
+
+# portfolio delete
+
+def delete_portfolio(request):
+    data = request.POST
+    id = data.get('id')
+    portfolio = Portfolio_item.objects.get(id=id)
+    portfolio.delete()
+    return redirect('/dashboard/table-list')
+
+# testimonial delte
+
+
+def delete_testimonial(request):
+    data = request.POST
+    id = data.get('id')
+    testimonial = Testimonial.objects.get(id=id)
+    testimonial.delete()
+    return redirect('/dashboard/table-list')
+
+# blog delet
+
+
+def delete_blog(request):
+    data = request.POST
+    id = data.get('id')
+    blog = Blog_item.objects.get(id=id)
+    blog.delete()
+    return redirect('/dashboard/table-list')
