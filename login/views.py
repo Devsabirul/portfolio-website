@@ -1,6 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from login.forms import HandelLoginForm, HandelPasswordChange
+from login.forms import HandelLoginForm
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
@@ -20,17 +19,11 @@ def login_(request):
             fm = HandelLoginForm()
         return render(request, 'login/login.html', {'form': fm})
     else:
-        return redirect('/dashboard/')
-
+        return redirect("/dashboard")
 
 # logout
+
+
 def user_logout(request):
     logout(request)
     return redirect('/SS-admin')
-
-# chagne password
-
-
-def change_user_password(request):
-    fm = HandelPasswordChange()
-    return render(request, 'login/login.html', {'form': fm})

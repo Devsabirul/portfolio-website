@@ -1,135 +1,167 @@
-from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from home.models import *
 from .form import *
+from django.contrib import messages
+from django.contrib.auth import authenticate
+from login.forms import HandelPasswordForm
 
 
 # Create your views here.
 
 
 def dashboard(request):
-    response_ = redirect('/dashboard/profile')
-    return response_
+    if request.user.is_authenticated:
+        response_ = redirect('/dashboard/profile')
+        return response_
+    else:
+        return redirect("/SS-admin")
 
 
 def user_profile(request):
-    about = About.objects.all()
-    return render(request, 'dashboard/users-profile.html', {'about': about})
+    if request.user.is_authenticated:
+        about = About.objects.all()
+        return render(request, 'dashboard/users-profile.html', {'about': about})
+    else:
+        return redirect("/SS-admin")
 
 
 def userinfo_update(request):
-    if request.method == "POST":
-        about = About(id=1)
-        about.name = request.POST['name']
-        about.about_me = request.POST['about']
-        about.profile = request.POST['profile']
-        about.location = request.POST['location']
-        about.phone = request.POST['phone']
-        about.email = request.POST['email']
-        about.facebook = request.POST['facebook']
-        about.instagram = request.POST['instagram']
-        about.linkedin = request.POST['linkedin']
-        if len(request.FILES) != 0:
-            about.photo = request.FILES['profile_pic']
-            about.logo = request.FILES['logo']
-        about.save()
-    response = redirect('/dashboard/profile')
-    return response
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            about = About(id=1)
+            about.name = request.POST['name']
+            about.about_me = request.POST['about']
+            about.profile = request.POST['profile']
+            about.location = request.POST['location']
+            about.phone = request.POST['phone']
+            about.email = request.POST['email']
+            about.facebook = request.POST['facebook']
+            about.instagram = request.POST['instagram']
+            about.linkedin = request.POST['linkedin']
+            if len(request.FILES) != 0:
+                about.photo = request.FILES['profile_pic']
+                about.logo = request.FILES['logo']
+            about.save()
+        response = redirect('/dashboard/profile')
+        return response
+    else:
+        return redirect("/SS-admin")
 
 
 def skills(request):
     about = About.objects.all()
-    if request.method == "POST":
-        fm = Skill_form(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save()
-            redirect("/add-skills")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            fm = Skill_form(request.POST, request.FILES)
+            if fm.is_valid():
+                fm.save()
+                redirect("/add-skills")
+        else:
+            fm = Skill_form()
+        return render(request, 'dashboard/skills.html', {'about': about, 'form': fm})
     else:
-        fm = Skill_form()
-    return render(request, 'dashboard/skills.html', {'about': about, 'form': fm})
+        return redirect("/SS-admin")
 
 
 def hero(request):
     about = About.objects.all()
     hero = Hero.objects.all()
     length_ = len(hero)
-    if length_ == 0:
-        if request.method == "POST":
-            fm = Hero_form(request.POST, request.FILES)
-            if fm.is_valid():
-                fm.save()
-                return redirect('/dashboard/')
+    if request.user.is_authenticated:
+        if length_ == 0:
+            if request.method == "POST":
+                fm = Hero_form(request.POST, request.FILES)
+                if fm.is_valid():
+                    fm.save()
+                    return redirect('/dashboard/')
+            else:
+                fm = Hero_form()
+            return render(request, 'dashboard/hero.html', {'about': about, 'form': fm, 'hero': hero})
         else:
-            fm = Hero_form()
-        return render(request, 'dashboard/hero.html', {'about': about, 'form': fm, 'hero': hero})
+            return redirect('/dashboard/update-hero')
     else:
-        return redirect('/dashboard/update-hero')
+        return redirect("/SS-admin")
 
 
 def update_hero(request):
     about = About.objects.all()
     hero = Hero.objects.all()
     length_ = len(hero)
-    if length_ == 0:
-        return redirect('/dashboard/add-cover-info')
-    else:
-        if request.method == "POST":
-            get_id = Hero.objects.get(id=1)
-            fm = Hero_form(request.POST, request.FILES, instance=get_id)
-            if fm.is_valid():
-                fm.save()
+    if request.user.is_authenticated:
+        if length_ == 0:
+            return redirect('/dashboard/add-cover-info')
         else:
-            get_id = Hero.objects.get(id=1)
-            fm = Hero_form(instance=get_id)
-        return render(request, 'dashboard/hero_update.html', {'form': fm, 'hero': hero, 'about': about})
+            if request.method == "POST":
+                get_id = Hero.objects.get(id=1)
+                fm = Hero_form(request.POST, request.FILES, instance=get_id)
+                if fm.is_valid():
+                    fm.save()
+            else:
+                get_id = Hero.objects.get(id=1)
+                fm = Hero_form(instance=get_id)
+            return render(request, 'dashboard/hero_update.html', {'form': fm, 'hero': hero, 'about': about})
+    else:
+        return redirect("/SS-admin")
 
 
 def services_list(request):
     about = About.objects.all()
-    if request.method == "POST":
-        fm = Services_form(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save()
-            return redirect("/dashboard/add-services-info")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            fm = Services_form(request.POST, request.FILES)
+            if fm.is_valid():
+                fm.save()
+                return redirect("/dashboard/add-services-info")
+        else:
+            fm = Services_form()
+        return render(request, 'dashboard/services.html', {'about': about, 'form': fm})
     else:
-        fm = Services_form()
-    return render(request, 'dashboard/services.html', {'about': about, 'form': fm})
+        return redirect("/SS-admin")
 
 
 def portfolio_list(request):
     about = About.objects.all()
-    if request.method == "POST":
-        fm = Portfolio_form(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save()
-            return redirect("/dashboard/add-portfolio-info")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            fm = Portfolio_form(request.POST, request.FILES)
+            if fm.is_valid():
+                fm.save()
+                return redirect("/dashboard/add-portfolio-info")
+        else:
+            fm = Portfolio_form()
+        return render(request, 'dashboard/portfolio_item.html', {'about': about, 'form': fm})
     else:
-        fm = Portfolio_form()
-    return render(request, 'dashboard/portfolio_item.html', {'about': about, 'form': fm})
+        return redirect("/SS-admin")
 
 
 def blog_list(request):
     about = About.objects.all()
-    if request.method == "POST":
-        fm = Blog_form(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save()
-            return redirect("/dashboard/add-blog-info")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            fm = Blog_form(request.POST, request.FILES)
+            if fm.is_valid():
+                fm.save()
+                return redirect("/dashboard/add-blog-info")
+        else:
+            fm = Blog_form()
+        return render(request, 'dashboard/blog_item.html', {'about': about, 'form': fm})
     else:
-        fm = Blog_form()
-    return render(request, 'dashboard/blog_item.html', {'about': about, 'form': fm})
+        return redirect("/SS-admin")
 
 
 def testimonial(request):
     about = About.objects.all()
-    if request.method == "POST":
-        fm = testimonial_form(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save()
-            return redirect("/dashboard/add-testimonial-info")
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            fm = testimonial_form(request.POST, request.FILES)
+            if fm.is_valid():
+                fm.save()
+                return redirect("/dashboard/add-testimonial-info")
+        else:
+            fm = testimonial_form()
+        return render(request, 'dashboard/testimonial.html', {'about': about, 'form': fm})
     else:
-        fm = testimonial_form()
-    return render(request, 'dashboard/testimonial.html', {'about': about, 'form': fm})
+        return redirect("/SS-admin")
 
 
 def otherComponent(request):
@@ -145,42 +177,63 @@ def otherComponent(request):
         'portfolio': portfolio,
         'count': count
     }
-    if request.method == "POST":
-        services = Services(id=1)
-        services.description = request.POST['services']
-        services.save()
-        blog = Blog(id=1)
-        blog.description = request.POST['blog']
-        blog.save()
-        portfolio = Portfolio(id=1)
-        portfolio.description = request.POST['portfolio']
-        portfolio.save()
-        count = Count(id=1)
-        count.work = request.POST['work']
-        count.experience = request.POST['experience']
-        count.total_client = request.POST['client']
-        count.award_won = request.POST['award_won']
-        count.save()
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            services = Services(id=1)
+            services.description = request.POST['services']
+            services.save()
+            blog = Blog(id=1)
+            blog.description = request.POST['blog']
+            blog.save()
+            portfolio = Portfolio(id=1)
+            portfolio.description = request.POST['portfolio']
+            portfolio.save()
+            count = Count(id=1)
+            count.work = request.POST['work']
+            count.experience = request.POST['experience']
+            count.total_client = request.POST['client']
+            count.award_won = request.POST['award_won']
+            count.save()
 
-    return render(request, 'dashboard/otherComponent.html', context)
+        return render(request, 'dashboard/otherComponent.html', context)
+    else:
+        return redirect("/SS-admin")
 
 
 def table_view(request):
-    skill = Skill.objects.all()
-    about = About.objects.all()
-    services = Services_list.objects.all()
-    portfolio = Portfolio_item.objects.all()
-    testimonial = Testimonial.objects.all()
-    blog = Blog_item.objects.all()
-    context = {
-        'skills': skill,
-        'about': about,
-        'services': services,
-        'portfolio': portfolio,
-        'testimonial': testimonial,
-        'blog': blog
-    }
-    return render(request, 'dashboard/tables.html', context)
+    if request.user.is_authenticated:
+        skill = Skill.objects.all()
+        about = About.objects.all()
+        services = Services_list.objects.all()
+        portfolio = Portfolio_item.objects.all()
+        testimonial = Testimonial.objects.all()
+        blog = Blog_item.objects.all()
+        context = {
+            'skills': skill,
+            'about': about,
+            'services': services,
+            'portfolio': portfolio,
+            'testimonial': testimonial,
+            'blog': blog
+        }
+        return render(request, 'dashboard/tables.html', context)
+    else:
+        return redirect("/SS-admin")
+
+
+def change_password(request):
+    if request.user.is_authenticated:
+        about = About.objects.all()
+        if request.method == "POST":
+            fm = HandelPasswordForm(user=request.user, data=request.POST)
+            if fm.is_valid():
+                fm.save()
+        else:
+            fm = HandelPasswordForm(user=request.user)
+        return render(request, 'dashboard/change_password.html', {'form': fm, 'about': about})
+    else:
+        return redirect("/SS-admin")
+
 
 
 def delete(request):
@@ -190,9 +243,8 @@ def delete(request):
     skills.delete()
     return redirect('/dashboard/table-list')
 
+
 # services delete
-
-
 def delete_services(request):
     data = request.POST
     id = data.get('id')

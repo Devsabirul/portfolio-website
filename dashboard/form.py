@@ -83,3 +83,5 @@ class testimonial_form(forms.ModelForm):
             "author": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Testimonial Author '}),
             'photo': forms.FileInput(attrs={'class': 'form-control mt-3'}),
         }
+
+

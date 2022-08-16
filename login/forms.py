@@ -16,9 +16,25 @@ class HandelLoginForm(AuthenticationForm):
     }
 
 
-class HandelPasswordChange(PasswordChangeForm):
-    old_password = forms.CharField(label=("Current Password"), widget=forms.PasswordInput(
-        attrs={"autocomplete": "current-password", "autofocus": True, 'class': 'form-control'})),
+class HandelPasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label=("Current Password"),
+        widget=forms.PasswordInput(
+            attrs={'class': "form-control"}
+        ),
+    )
+    new_password1 = forms.CharField(
+        label=("New password"),
+        widget=forms.PasswordInput(
+            attrs={'class': "form-control"}
+        ),
+    )
+    new_password2 = forms.CharField(
+        label=("Confirm new password"),
+        widget=forms.PasswordInput(
+            attrs={'class': "form-control"}
+        ),
+    )
 
     error_messages = {
         "password_incorrect": (
