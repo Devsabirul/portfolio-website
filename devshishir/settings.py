@@ -1,4 +1,6 @@
 from pathlib import Path
+import django_heroku
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -14,7 +16,7 @@ SECRET_KEY = 'django-insecure-m$#9*xur2hit6&v1u71c-y**s(nnj9!gimb2&gkrrorr_4#x+_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['devsabirul.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -70,10 +73,10 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'my_db',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'NAME': 'db3fsmf29c2kb5',
+        'USER': 'ufrbpyrrjshahx',
+        'PASSWORD': '15f8c8183d14e8eb7b155e3b995e17bb64c63471b006c954cf60382cee362f9e',
+        'HOST': 'ec2-44-205-64-253.compute-1.amazonaws.com',
         'PORT': '5432',
 
     }
@@ -134,3 +137,5 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'xxsFxHgzn_2zRoqdzG2ki4aWQ8c'
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())

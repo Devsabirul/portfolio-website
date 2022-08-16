@@ -1,0 +1,1 @@
+web: gunicorn devsabirul.wsgi --log-file -
