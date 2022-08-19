@@ -45,6 +45,7 @@
                 {% csrf_token %}
                 <b><u> Add informations: </u></b><br>
                 {% for fm in form %}
+                {{fm.label}}
                 {{fm}}
                 {% endfor %}
                 <input type="submit" class="btn btn-primary d-block mt-3 " value="Save Change">
