@@ -5,7 +5,7 @@ from autoslug import AutoSlugField
 
 
 class Hero(models.Model):
-    img = models.ImageField(upload_to="images/")
+    Cover = models.ImageField(upload_to="images/")
     cv = models.FileField(upload_to="images/")
     heading = models.CharField(max_length=120)
     # typeing efect

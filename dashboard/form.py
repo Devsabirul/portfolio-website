@@ -24,8 +24,9 @@ class Hero_form(forms.ModelForm):
         model = Hero
         fields = "__all__"
         widgets = {
-            "img": forms.FileInput(attrs={'class': 'form-control mt-3 mb-3'}),
-            "heading": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Enter your Skills Percentage'}),
+            "Cover": forms.FileInput(attrs={'class': 'form-control mt-3 mb-3'}),
+            "heading": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Heading'}),
+            'cv': forms.FileInput(attrs={'class': 'form-control mt-3 mb-3'}),
             "t1": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Typing Effect 1st '}),
             "t2": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Typing Effect 2nd '}),
             "t3": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Typing Effect 3rd '}),
@@ -83,5 +84,3 @@ class testimonial_form(forms.ModelForm):
             "author": forms.TextInput(attrs={'class': 'form-control mt-3', 'placeholder': 'Testimonial Author '}),
             'photo': forms.FileInput(attrs={'class': 'form-control mt-3'}),
         }
-
-
