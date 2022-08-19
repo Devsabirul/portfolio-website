@@ -235,7 +235,6 @@ def change_password(request):
         return redirect("/SS-admin")
 
 
-
 def delete(request):
     data = request.POST
     id = data.get('id')

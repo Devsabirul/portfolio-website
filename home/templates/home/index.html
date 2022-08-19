@@ -129,7 +129,7 @@
   <!-- ======= Counter Section ======= -->
   {% for counter in count %}
   <div class="section-counter paralax-mf bg-image"
-    style="background-image: url({% static 'assets/img/counters-bg.jpg' %})">
+    style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
     <div class="overlay-mf"></div>
     <div class="container position-relative">
       <div class="row">
@@ -186,7 +186,6 @@
 
   <!-- ======= Portfolio Section ======= -->
   <section id="work" class="portfolio-mf sect-pt4 route">
-    {% for subtitle in portfolio %}
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -194,43 +193,44 @@
             <h3 class="title-a">
               Portfolio
             </h3>
-            <p class="subtitle-a">
-              {{subtitle.description}}
-            </p>
-            <div class="line-mf"></div>
+            {% for subtitle in portfolio %}
+              <p class="subtitle-a">
+                {{subtitle.description}}
+              </p>
+            {% endfor %}
+              <div class="line-mf"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        {% for item in portfolio_list %}
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="{{item.Picture.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
-              <div class="work-img">
-                <img src="{{item.Picture.url}}" alt="" class="img-fluid">
-              </div>
-            </a>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title">{{item.title}}</h2>
-                  <div class="w-more">
-                    <span class="w-ctegory">{{item.category}}</span> / <span class="w-date">{{item.date}}</span>
-                  </div>
+        <div class="row">
+          {% for item in portfolio_list %}
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="{{item.Picture.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                <div class="work-img">
+                  <img src="{{item.Picture.url}}" alt="" class="img-fluid">
                 </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href="{% url 'portfolio_single_page' item.slug %}"> <span class="bi bi-plus-circle"></span></a>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h2 class="w-title">{{item.title}}</h2>
+                    <div class="w-more">
+                      <span class="w-ctegory">{{item.category}}</span> / <span class="w-date">{{item.date}}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <a href="{% url 'portfolio_single_page' item.slug %}"> <span class="bi bi-plus-circle"></span></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
-    </div>
-    {% endfor %}
   </section><!-- End Portfolio Section -->
 
   <!-- ======= Testimonials Section ======= -->

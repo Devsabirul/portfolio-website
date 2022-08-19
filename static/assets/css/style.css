@@ -995,6 +995,7 @@ p.hero-subtitle {
 .work-img {
   display: block;
   overflow: hidden;
+  height: 206px !important;
 }
 
 .work-img img {

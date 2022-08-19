@@ -60,85 +60,116 @@
                                     <form action="others-component" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         {% comment %} service start {% endcomment %}
-                                            {% if services|length == 1 %}
-                                                {% for services in services %}
-                                                <div class="row mb-3">
-                                                    <label for="services"
-                                                        class="col-md-4 col-lg-3 col-form-label">Services</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input name="services" type="text" class="form-control" id="services"
-                                                            value="{{services.description}}"
-                                                            placeholder="Edit Services Sort Description">
-                                                    </div>
-                                                </div>
-                                                {% endfor %}
-                                            {% else %}
-                                                <div class="row mb-3">
-                                                    <label for="services"
-                                                        class="col-md-4 col-lg-3 col-form-label">Services</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input name="services" type="text" class="form-control" id="services"
-                                                            value="" placeholder="Edit Services Sort Description">
-                                                    </div>
-                                                </div>
-                                            {% endif %}
-                                        {% comment %} blog start  {% endcomment %}
-                                                {% if blog|length == 1 %}
-                                                    {% for blog in blog %}
-                                                        <div class="row mb-3">
-                                                            <label for="blog"
-                                                                class="col-md-4 col-lg-3 col-form-label">Blog</label>
-                                                            <div class="col-md-8 col-lg-9">
-                                                                <input name="blog" type="text" class="form-control" id="blog"
-                                                                    value="{{blog.description}}"
-                                                                    placeholder="Edit blog Sort Description">
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% else %}
-                                                    <div class="row mb-3">
-                                                        <label for="blog"
-                                                            class="col-md-4 col-lg-3 col-form-label">Blog</label>
-                                                        <div class="col-md-8 col-lg-9">
-                                                            <input name="blog" type="text" class="form-control" id="blog"
-                                                                value=""
-                                                                placeholder="Edit blog Sort Description">
-                                                        </div>
-                                                    </div>
-                                                {% endif %}
-                                        {% comment %} portlio start  {% endcomment %}
-                                                {% if portfolio|length == 1 %}
-                                                    {% for portfolio in portfolio %}
-                                                        <div class="row mb-3">
-                                                            <label for="portfolio"
-                                                                class="col-md-4 col-lg-3 col-form-label">Portfolio</label>
-                                                            <div class="col-md-8 col-lg-9">
-                                                                <input name="portfolio" type="text" class="form-control" id="portfolio"
-                                                                    value="{{portfolio.description}}"
-                                                                    placeholder="Edit portfolio Sort Description">
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% else %}
-                                                    <div class="row mb-3">
-                                                        <label for="portfolio"
-                                                            class="col-md-4 col-lg-3 col-form-label">Portfolio</label>
-                                                        <div class="col-md-8 col-lg-9">
-                                                            <input name="portfolio" type="text" class="form-control" id="portfolio"
-                                                                value="" placeholder="Edit portfolio Sort Description">
-                                                        </div>
-                                                    </div>
-                                                {% endif %}
-                                        
-                                        <!-- counter section  -->
-                                        {% for count in count %}
-                                            <div class="row mb-3">
-                                                <p class=""><u> Edit Counter Section:</u></p>
+                                        {% if services|length == 1 %}
+                                        {% for services in services %}
+                                        <div class="row mb-3">
+                                            <label for="services"
+                                                class="col-md-4 col-lg-3 col-form-label">Services</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="services" type="text" class="form-control" id="services"
+                                                    value="{{services.description}}"
+                                                    placeholder="Edit Services Sort Description">
                                             </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="row mb-3">
+                                            <label for="services"
+                                                class="col-md-4 col-lg-3 col-form-label">Services</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="services" type="text" class="form-control" id="services"
+                                                    value="" placeholder="Edit Services Sort Description">
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% comment %} blog start {% endcomment %}
+                                        {% if blog|length == 1 %}
+                                        {% for blog in blog %}
+                                        <div class="row mb-3">
+                                            <label for="blog" class="col-md-4 col-lg-3 col-form-label">Blog</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="blog" type="text" class="form-control" id="blog"
+                                                    value="{{blog.description}}"
+                                                    placeholder="Edit blog Sort Description">
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="row mb-3">
+                                            <label for="blog" class="col-md-4 col-lg-3 col-form-label">Blog</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="blog" type="text" class="form-control" id="blog" value=""
+                                                    placeholder="Edit blog Sort Description">
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% comment %} portlio start {% endcomment %}
+                                        {% if portfolio|length == 1 %}
+                                        {% for portfolio in portfolio %}
+                                        <div class="row mb-3">
+                                            <label for="portfolio"
+                                                class="col-md-4 col-lg-3 col-form-label">Portfolio</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="portfolio" type="text" class="form-control" id="portfolio"
+                                                    value="{{portfolio.description}}"
+                                                    placeholder="Edit portfolio Sort Description">
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="row mb-3">
+                                            <label for="portfolio"
+                                                class="col-md-4 col-lg-3 col-form-label">Portfolio</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="portfolio" type="text" class="form-control" id="portfolio"
+                                                    value="" placeholder="Edit portfolio Sort Description">
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <!-- counter section  -->
+                                        <div class="row mb-3">
+                                            <p class=""><u> Edit Counter Section:</u></p>
+                                        </div>
+                                        {% if count|length == 1 %}
+                                            {% for count in count %}
+                                                <div class="row mb-3">
+                                                    <label for="work" class="col-md-4 col-lg-3 col-form-label">Work</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="work" type="text" class="form-control" id="work"
+                                                            value="{{count.work}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="experience"
+                                                        class="col-md-4 col-lg-3 col-form-label">Experience</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="experience" type="text" class="form-control"
+                                                            id="experience" value="{{count.experience}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="client" class="col-md-4 col-lg-3 col-form-label">Total
+                                                        Client</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="client" type="text" class="form-control" id="client"
+                                                            value="{{count.total_client}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="award_won" class="col-md-4 col-lg-3 col-form-label">Award
+                                                        Won</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="award_won" type="text" class="form-control" id="award_won"
+                                                            value="{{count.award_won}}">
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% else %}
                                             <div class="row mb-3">
                                                 <label for="work" class="col-md-4 col-lg-3 col-form-label">Work</label>
                                                 <div class="col-md-8 col-lg-9">
-                                                    <input name="work" type="text" class="form-control" id="work" value="{{count.work}}">
+                                                    <input name="work" type="text" class="form-control" id="work"
+                                                        value="{{count.work}}">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -165,7 +196,8 @@
                                                         value="{{count.award_won}}">
                                                 </div>
                                             </div>
-                                        {% endfor %}
+                                        {% endif %}
+                                       
                                         <!-- end counter  -->
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary w-50">Save</button>
