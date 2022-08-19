@@ -1,1 +1,1 @@
-web: gunicorn devsabirul.wsgi --log-file -
+web: gunicorn devshishir.wsgi --log-file -
