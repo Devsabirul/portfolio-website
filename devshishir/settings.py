@@ -75,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db3fsmf29c2kb5',
         'USER': 'ufrbpyrrjshahx',
-        'PASSWORD': '15f8c8183d14e8eb7b155e3b995e17bb64c63471b006c954cf60382cee362f9e',
+        'PASSWORD':'15f8c8183d14e8eb7b155e3b995e17bb64c63471b006c954cf60382cee362f9e',
         'HOST': 'ec2-44-205-64-253.compute-1.amazonaws.com',
         'PORT': '5432',
 
@@ -119,10 +119,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -137,6 +142,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '254415131278637',
     'API_SECRET': 'xxsFxHgzn_2zRoqdzG2ki4aWQ8c'
 }
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 django_heroku.settings(locals())
